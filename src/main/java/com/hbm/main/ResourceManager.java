@@ -829,7 +829,7 @@ public class ResourceManager {
 	public static final ResourceLocation substation_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/substation.png");
 	public static final ResourceLocation wire_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/wire.png");
 	public static final ResourceLocation wire_greyscale_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/wire_greyscale.png");
-	
+
 	//Pipes
 	public static final ResourceLocation pipe_anchor_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/pipe_anchor.png");
 	public static final ResourceLocation fluid_pump_tex = new ResourceLocation(RefStrings.MODID, "textures/models/network/fluid_diode.png");
@@ -1570,6 +1570,9 @@ public class ResourceManager {
 	public static final IModelCustom toaster = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/toaster.obj"));
 
 	public static final IModelCustom deco_computer = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/puter.obj"));
+
+	public static final IModelCustom steel_railing = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railing.obj"));
+	public static final IModelCustom steel_railing_corner = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railingcorner.obj"));
 
 	// Some RBMK elements are loaded twice due to VBOs not supporting tessellation
 	public static final IModelCustom rbmk_element = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/rbmk/rbmk_element.obj"));
