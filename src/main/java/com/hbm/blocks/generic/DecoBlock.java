@@ -36,7 +36,7 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	@Override
 	public boolean onScrew(World world, EntityPlayer player, int x, int y, int z, int side, float fX, float fY, float fZ, ToolType tool) {
 		if(tool != ToolType.SCREWDRIVER) return false;
-		if(this != ModBlocks.steel_wall && this != ModBlocks.steel_corner) return false;
+		if(this != ModBlocks.steel_wall && this != ModBlocks.steel_corner && this != ModBlocks.steel_railing) return false;
 
 		int meta = world.getBlockMetadata(x, y, z);
 
@@ -66,12 +66,17 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	public static int renderIDBeam = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDWall = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDCorner = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDRailing = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDRailingCorner = RenderingRegistry.getNextAvailableRenderId();
+
 
 	@Override
 	public int getRenderType(){
 		if(this == ModBlocks.steel_wall) return renderIDWall;
 		if(this == ModBlocks.steel_corner) return renderIDCorner;
 		if(this == ModBlocks.steel_beam) return renderIDBeam;
+		if(this == ModBlocks.steel_railing) return renderIDRailing;
+		if(this == ModBlocks.steel_railing_corner) return renderIDRailingCorner;
 		return -1;
 	}
 
@@ -135,6 +140,19 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 			case 3: this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f); break;
 			}
 		}
+
+		if(this == ModBlocks.steel_railing) {
+			switch(te) {
+				case 4: this.setBlockBounds(14 * f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
+				case 2: this.setBlockBounds(0.0F, 0.0F, 14 * f, 1.0F, 1.0F, 1.0F); break;
+				case 5: this.setBlockBounds(0.0F, 0.0F, 0.0F, 2 * f, 1.0F, 1.0F); break;
+				case 3: this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 2 * f); break;
+			}
+		}
+
+		if(this == ModBlocks.steel_railing_corner) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		}
 	}
 
 	@Override
@@ -171,6 +189,35 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 				bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.25D, y + 1D, z + 0.25D));
 				bbs.add(AxisAlignedBB.getBoundingBox(x + 0.25D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
 				break;
+			}
+
+			for(AxisAlignedBB bb : bbs) {
+				if(aabb.intersectsWith(bb)) {
+					list.add(bb);
+				}
+			}
+		}
+		else if(this == ModBlocks.steel_railing_corner) {
+			int meta = world.getBlockMetadata(x, y, z);
+			List<AxisAlignedBB> bbs = new ArrayList();
+
+			switch(meta) {
+				case 2:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					break;
+				case 3:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					break;
+				case 4:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					break;
+				case 5:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					break;
 			}
 
 			for(AxisAlignedBB bb : bbs) {

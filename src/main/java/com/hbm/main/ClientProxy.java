@@ -129,18 +129,18 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class ClientProxy extends ServerProxy {
-	
+
 	private static final I18nClient I18N = new I18nClient();
 
 	public RenderInfoSystem theInfoSystem = new RenderInfoSystem();
-	
+
 	public ITranslate getI18n() { return I18N; }
 
 	/** Runs just before item an block init */
 	@Override
 	public void registerPreRenderInfo() {
 		AdvancedModelLoader.registerModelHandler(new HmfModelLoader());
-		
+
 		QMAWLoader.registerModFileURL(FMLCommonHandler.instance().findContainerFor(RefStrings.MODID).getSource());
 	}
 
@@ -450,7 +450,7 @@ public class ClientProxy extends ServerProxy {
 				}
 			}
 		}
-		
+
 		// same crap but for items directly because why invent a new solution when this shit works just fine
 		Iterator itItems = Item.itemRegistry.iterator();
 		while(itItems.hasNext()) {
@@ -794,13 +794,15 @@ public class ClientProxy extends ServerProxy {
 	public void registerBlockRenderer() {
 
 		RenderingRegistry.registerBlockHandler(new RenderISBRHUniversal());
-		
+
 		/// STOP DOING THIS ///
 		RenderingRegistry.registerBlockHandler(new RenderScaffoldBlock());
 		RenderingRegistry.registerBlockHandler(new RenderTapeBlock());
 		RenderingRegistry.registerBlockHandler(new RenderSteelBeam());
 		RenderingRegistry.registerBlockHandler(new RenderSteelWall());
 		RenderingRegistry.registerBlockHandler(new RenderSteelCorner());
+		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing.getRenderType(), ResourceManager.steel_railing));
+		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing_corner.getRenderType(), ResourceManager.steel_railing_corner));
 		RenderingRegistry.registerBlockHandler(new RenderBarrel());
 		RenderingRegistry.registerBlockHandler(new RenderFence());
 		RenderingRegistry.registerBlockHandler(new RenderBarbedWire());
