@@ -31,6 +31,9 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 	@SideOnly(Side.CLIENT)
 	private IIcon grateIcon;
 
+	private double thickness = 0.08D;
+	private double wall_height = 1.1D;
+
 	public RailingBlock(Material p_i45386_1_) {
 		super(p_i45386_1_);
 	}
@@ -129,10 +132,10 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 
 		if(this == ModBlocks.steel_railing) {
 			switch(te) {
-				case 2: this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 2 * f); break;
-				case 3: this.setBlockBounds(0.0F, 0.0F, 14 * f, 1.0F, 1.0F, 1.0F); break;
-				case 4: this.setBlockBounds(0.0F, 0.0F, 0.0F, 2 * f, 1.0F, 1.0F); break;
-				case 5: this.setBlockBounds(14 * f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
+				case 2: this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, (float)thickness); break;
+				case 3: this.setBlockBounds(0.0F, 0.0F, 1.0F - (float)thickness, 1.0F, 1.0F, 1.0F); break;
+				case 4: this.setBlockBounds(0.0F, 0.0F, 0.0F, (float)thickness, 1.0F, 1.0F); break;
+				case 5: this.setBlockBounds(1.0F - (float)thickness, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
 			}
 		}
 		else if(this == ModBlocks.steel_stairs) {
@@ -151,83 +154,98 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 		int meta = world.getBlockMetadata(x, y, z);
 		List<AxisAlignedBB> bbs = new ArrayList<>();
 
-		double thickness = 0.125D;
-
-		if(this == ModBlocks.steel_railing_corner) {
-			switch(meta) {
+		if(this == ModBlocks.steel_railing)
+		{
+			switch (meta) {
 				case 2:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.0D, y + 0.0D, z + 0.0D, x + 1.0D, y + wall_height, z + thickness));
 					break;
 				case 3:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.0D, y + 0.0D, z + 1.0D - thickness, x + 1.0D, y + wall_height, z + 1.0D));
 					break;
 				case 4:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.0D, y + 0.0D, z + 0.0D, x + thickness, y + wall_height, z + 1.0D));
 					break;
 				case 5:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1.0D - thickness, y + 0.0D, z + 0.0D, x + 1.0D, y + wall_height, z + 1.0D));
+					break;
+			}
+		}
+		else if(this == ModBlocks.steel_railing_corner) {
+			switch(meta) {
+				case 2:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
+					break;
+				case 3:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
+					break;
+				case 4:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
+					break;
+				case 5:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
 					break;
 			}
 		} else if(this == ModBlocks.steel_railing_straight) {
 			switch(meta) {
 				case 2:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
 					break;
 				case 3:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
 					break;
 				case 4:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
 					break;
 				case 5:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
 					break;
 			}
 		} else if(this == ModBlocks.steel_railing_end) {
 			switch(meta) {
 				case 2:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
 					// Back
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
 					break;
 				case 3:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
 					// Back
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
 					break;
 				case 4:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
 					// Back
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + wall_height, z + 1D));
 					break;
 				case 5:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + wall_height, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + wall_height, z + thickness));
 					// Back
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + wall_height, z + 1D));
 					break;
 			}
 		} else if(this == ModBlocks.steel_stairs) {
 			switch(meta) {
 				case 2:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 2D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + 2, z + 1D));
 
 					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.5D, x + 1D, y + 0.5D, z + 1D));
@@ -235,8 +253,8 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 					break;
 				case 3:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 2D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + thickness, y + 2, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 1D - thickness, y + 0D, z + 0D, x + 1D, y + 2, z + 1D));
 
 					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 0.5D, z + 0.5D));
@@ -244,8 +262,8 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 					break;
 				case 4:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2D, z + 0.125D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2, z + thickness));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + 2, z + 1D));
 
 					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.5D, y + 0D, z + 0D, x + 1D, y + 0.5D, z + 1D));
@@ -253,8 +271,8 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 					break;
 				case 5:
 					// Sides
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 2D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 1D - thickness, x + 1D, y + 2, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2, z + thickness));
 
 					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.5D, y + 0.5D, z + 1D));
