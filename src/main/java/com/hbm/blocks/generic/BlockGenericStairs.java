@@ -15,9 +15,9 @@ public class BlockGenericStairs extends BlockStairs {
 	public BlockGenericStairs(Block block, int meta) {
 		super(block, meta);
 		this.useNeighborBrightness = true;
-		
+
 		recipeGen.add(new Object[] {block, meta, this});
-		
+
 		this.setBlockTextureName(RefStrings.MODID + ":concrete");
 	}
 }
