@@ -99,5 +99,4 @@ public class RenderRailing implements ISimpleBlockRenderingHandler {
 	public int getRenderId() {
 		return this.renderID;
 	}
-
 }

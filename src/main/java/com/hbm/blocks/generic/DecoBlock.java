@@ -66,12 +66,14 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	public static int renderIDBeam = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDWall = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDCorner = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDRoadBarrier = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public int getRenderType(){
 		if(this == ModBlocks.steel_wall) return renderIDWall;
 		if(this == ModBlocks.steel_corner) return renderIDCorner;
 		if(this == ModBlocks.steel_beam) return renderIDBeam;
+		if(this == ModBlocks.road_barrier) return renderIDRoadBarrier;
 		return -1;
 	}
 
@@ -133,6 +135,16 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 			case 2: this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f); break;
 			case 5: this.setBlockBounds(2 * f, 0.0F, 0.0F, 14 * f, 1.0F, 1.0F); break;
 			case 3: this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f); break;
+			}
+		}
+
+		if(this == ModBlocks.road_barrier) {
+			this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f);
+			switch(te) {
+				case 4: this.setBlockBounds(2 * f, 0.0F, 0.0F, 14 * f, 1.0F, 1.0F); break;
+				case 2: this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f); break;
+				case 5: this.setBlockBounds(2 * f, 0.0F, 0.0F, 14 * f, 1.0F, 1.0F); break;
+				case 3: this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f); break;
 			}
 		}
 	}
