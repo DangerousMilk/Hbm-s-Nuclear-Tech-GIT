@@ -803,6 +803,8 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerBlockHandler(new RenderSteelCorner());
 		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing.getRenderType(), ResourceManager.steel_railing));
 		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing_corner.getRenderType(), ResourceManager.steel_railing_corner));
+		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing_straight.getRenderType(), ResourceManager.steel_railing_straight));
+		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.steel_railing_end.getRenderType(), ResourceManager.steel_railing_end));
 		RenderingRegistry.registerBlockHandler(new RenderBarrel());
 		RenderingRegistry.registerBlockHandler(new RenderFence());
 		RenderingRegistry.registerBlockHandler(new RenderBarbedWire());

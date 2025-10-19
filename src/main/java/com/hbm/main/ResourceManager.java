@@ -1573,6 +1573,8 @@ public class ResourceManager {
 
 	public static final IModelCustom steel_railing = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railing.obj"));
 	public static final IModelCustom steel_railing_corner = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railingcorner.obj"));
+	public static final IModelCustom steel_railing_straight = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railingdouble.obj"));
+	public static final IModelCustom steel_railing_end = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/blocks/railingend.obj"));
 
 	// Some RBMK elements are loaded twice due to VBOs not supporting tessellation
 	public static final IModelCustom rbmk_element = AdvancedModelLoader.loadModel(new ResourceLocation(RefStrings.MODID, "models/rbmk/rbmk_element.obj"));
