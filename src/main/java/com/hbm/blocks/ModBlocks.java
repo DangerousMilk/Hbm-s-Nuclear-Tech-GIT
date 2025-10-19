@@ -429,6 +429,8 @@ public class ModBlocks {
 	public static Block steel_grate_wide;
 	public static Block steel_railing;
 	public static Block steel_railing_corner;
+	public static Block steel_railing_straight;
+	public static Block steel_railing_end;
 
 	@Deprecated public static Block deco_pipe;
 	@Deprecated public static Block deco_pipe_rusted;
@@ -1636,6 +1638,8 @@ public class ModBlocks {
 		steel_grate_wide = new BlockGrate(Material.iron).setBlockName("steel_grate_wide").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F);
 		steel_railing = new DecoBlock(Material.iron).setBlockName("steel_railing").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_railing_corner = new DecoBlock(Material.iron).setBlockName("steel_railing_corner").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
+		steel_railing_straight = new DecoBlock(Material.iron).setBlockName("steel_railing_straight").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
+		steel_railing_end = new DecoBlock(Material.iron).setBlockName("steel_railing_end").setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
@@ -2828,6 +2832,8 @@ public class ModBlocks {
 		register(steel_grate_wide);
 		GameRegistry.registerBlock(steel_railing, steel_railing.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_railing_corner, steel_railing_corner.getUnlocalizedName());
+		GameRegistry.registerBlock(steel_railing_straight, steel_railing_straight.getUnlocalizedName());
+		GameRegistry.registerBlock(steel_railing_end, steel_railing_end.getUnlocalizedName());
 		//register(scaffold_dynamic);
 		/*
 		 * operation: pipe annihilation
