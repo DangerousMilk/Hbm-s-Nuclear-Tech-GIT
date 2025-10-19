@@ -36,7 +36,13 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	@Override
 	public boolean onScrew(World world, EntityPlayer player, int x, int y, int z, int side, float fX, float fY, float fZ, ToolType tool) {
 		if(tool != ToolType.SCREWDRIVER) return false;
-		if(this != ModBlocks.steel_wall && this != ModBlocks.steel_corner && this != ModBlocks.steel_railing) return false;
+		if(this != ModBlocks.steel_wall
+			&& this != ModBlocks.steel_corner
+			&& this != ModBlocks.steel_railing_end
+			&& this != ModBlocks.steel_stairs
+			&& this != ModBlocks.steel_railing_corner
+			&& this != ModBlocks.steel_railing_straight
+			&& this != ModBlocks.steel_railing) return false;
 
 		int meta = world.getBlockMetadata(x, y, z);
 
@@ -148,10 +154,10 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 
 		if(this == ModBlocks.steel_railing) {
 			switch(te) {
-				case 4: this.setBlockBounds(14 * f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
-				case 2: this.setBlockBounds(0.0F, 0.0F, 14 * f, 1.0F, 1.0F, 1.0F); break;
-				case 5: this.setBlockBounds(0.0F, 0.0F, 0.0F, 2 * f, 1.0F, 1.0F); break;
-				case 3: this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 2 * f); break;
+				case 2: this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 2 * f); break;
+				case 3: this.setBlockBounds(0.0F, 0.0F, 14 * f, 1.0F, 1.0F, 1.0F); break;
+				case 4: this.setBlockBounds(0.0F, 0.0F, 0.0F, 2 * f, 1.0F, 1.0F); break;
+				case 5: this.setBlockBounds(14 * f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
 			}
 		}
 
@@ -204,20 +210,20 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 		else if(this == ModBlocks.steel_railing_corner) {
 			switch(meta) {
 				case 2:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
 					break;
 				case 3:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
 					break;
 				case 4:
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
-					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
-					break;
-				case 5:
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
+					break;
+				case 5:
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
 					break;
 			}
 
@@ -229,22 +235,18 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 		} else if(this == ModBlocks.steel_railing_straight) {
 			switch(meta) {
 				case 2:
-					//bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
 					break;
 				case 3:
-					//bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
 					break;
 				case 4:
-					//bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
 					break;
 				case 5:
-					//bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 1D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 1D, z + 0.125D));
 					break;
