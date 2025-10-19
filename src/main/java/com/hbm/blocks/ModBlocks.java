@@ -1643,7 +1643,7 @@ public class ModBlocks {
 		steel_railing_straight = new RailingBlock(Material.iron).setBlockName("steel_railing_straight").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_railing_end = new RailingBlock(Material.iron).setBlockName("steel_railing_end").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_stairs = new RailingBlock(Material.iron).setBlockName("steel_stairs").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
-		road_barrier = new DecoBlock(Material.iron).setBlockName("road_barrier").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
+		road_barrier = new DecoBlock(Material.iron).setBlockName("road_barrier").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":concrete_stripe");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
