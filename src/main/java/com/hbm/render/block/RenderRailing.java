@@ -34,8 +34,8 @@ public class RenderRailing implements ISimpleBlockRenderingHandler {
 			iicon = renderer.overrideBlockTexture;
 		}
 
-		GL11.glTranslated(0, 0.1D, 0);
-		GL11.glScaled(1.2D, 1.2D, 1.2D);
+		GL11.glTranslated(0, -0.5D, 0);
+		GL11.glScaled(1D, 1D, 1D);
 		tessellator.startDrawingQuads();
 		ObjUtil.renderWithIcon((WavefrontObject) model, iicon, tessellator, 0, false);
 
