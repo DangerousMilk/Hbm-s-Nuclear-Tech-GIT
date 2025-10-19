@@ -432,6 +432,7 @@ public class ModBlocks {
 	public static Block steel_railing_straight;
 	public static Block steel_railing_end;
 	public static Block steel_stairs;
+	public static Block road_barrier;
 
 	@Deprecated public static Block deco_pipe;
 	@Deprecated public static Block deco_pipe_rusted;
@@ -1642,6 +1643,7 @@ public class ModBlocks {
 		steel_railing_straight = new RailingBlock(Material.iron).setBlockName("steel_railing_straight").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_railing_end = new RailingBlock(Material.iron).setBlockName("steel_railing_end").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_stairs = new RailingBlock(Material.iron).setBlockName("steel_stairs").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
+		road_barrier = new DecoBlock(Material.iron).setBlockName("road_barrier").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
@@ -2837,6 +2839,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(steel_railing_straight, steel_railing_straight.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_railing_end, steel_railing_end.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_stairs, steel_stairs.getUnlocalizedName());
+		GameRegistry.registerBlock(road_barrier, road_barrier.getUnlocalizedName());
 		//register(scaffold_dynamic);
 		/*
 		 * operation: pipe annihilation

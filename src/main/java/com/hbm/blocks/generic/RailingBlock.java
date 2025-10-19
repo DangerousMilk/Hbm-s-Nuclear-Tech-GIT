@@ -135,6 +135,9 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 				case 5: this.setBlockBounds(14 * f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); break;
 			}
 		}
+		else if(this == ModBlocks.steel_stairs) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
+		}
 	}
 
 	@Override
@@ -147,6 +150,8 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB aabb, List list, Entity collider) {
 		int meta = world.getBlockMetadata(x, y, z);
 		List<AxisAlignedBB> bbs = new ArrayList<>();
+
+		double thickness = 0.125D;
 
 		if(this == ModBlocks.steel_railing_corner) {
 			switch(meta) {
@@ -220,18 +225,38 @@ public class RailingBlock extends Block implements IToolable, INBTBlockTransform
 		} else if(this == ModBlocks.steel_stairs) {
 			switch(meta) {
 				case 2:
+					// Sides
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 2D, z + 1D));
+
+					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.5D, x + 1D, y + 0.5D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0.5D, z + 0D, x + 1D, y + 1D, z + 0.5D));
 					break;
 				case 3:
+					// Sides
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.125D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.875D, y + 0D, z + 0D, x + 1D, y + 2D, z + 1D));
+
+					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 0.5D, z + 0.5D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0.5D, z + 0.5D, x + 1D, y + 1D, z + 1D));
 					break;
 				case 4:
+					// Sides
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2D, z + 0.125D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 2D, z + 1D));
+
+					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.5D, y + 0D, z + 0D, x + 1D, y + 0.5D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0.5D, z + 0D, x + 0.5D, y + 1D, z + 1D));
 					break;
 				case 5:
+					// Sides
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0.875D, x + 1D, y + 2D, z + 1D));
+					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 1D, y + 2D, z + 0.125D));
+
+					// Steps
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0D, y + 0D, z + 0D, x + 0.5D, y + 0.5D, z + 1D));
 					bbs.add(AxisAlignedBB.getBoundingBox(x + 0.5D, y + 0.5D, z + 0D, x + 1D, y + 1D, z + 1D));
 					break;
