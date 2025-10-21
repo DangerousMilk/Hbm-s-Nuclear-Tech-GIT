@@ -67,13 +67,16 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	public static int renderIDWall = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDCorner = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDRoadBarrier = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDOfficePlant = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public int getRenderType(){
 		if(this == ModBlocks.steel_wall) return renderIDWall;
 		if(this == ModBlocks.steel_corner) return renderIDCorner;
 		if(this == ModBlocks.steel_beam) return renderIDBeam;
-		if(this == ModBlocks.road_barrier) return renderIDRoadBarrier;
+		if(this == ModBlocks.road_barrier_striped || this == ModBlocks.road_barrier_concrete) return renderIDRoadBarrier;
+		if(this == ModBlocks.office_plant) return renderIDOfficePlant;
+
 		return -1;
 	}
 
@@ -138,7 +141,7 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 			}
 		}
 
-		if(this == ModBlocks.road_barrier) {
+		if(this == ModBlocks.road_barrier_striped || this == ModBlocks.road_barrier_concrete) {
 			this.setBlockBounds(0.0F, 0.0F, 2 * f, 1.0F, 1.0F, 14 * f);
 			switch(te) {
 				case 4: this.setBlockBounds(2 * f, 0.0F, 0.0F, 14 * f, 1.0F, 1.0F); break;

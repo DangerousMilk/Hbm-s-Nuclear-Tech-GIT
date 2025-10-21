@@ -432,7 +432,9 @@ public class ModBlocks {
 	public static Block steel_railing_straight;
 	public static Block steel_railing_end;
 	public static Block steel_stairs;
-	public static Block road_barrier;
+	public static Block road_barrier_striped;
+	public static Block road_barrier_concrete;
+	public static Block office_plant;
 
 	@Deprecated public static Block deco_pipe;
 	@Deprecated public static Block deco_pipe_rusted;
@@ -1643,7 +1645,9 @@ public class ModBlocks {
 		steel_railing_straight = new RailingBlock(Material.iron).setBlockName("steel_railing_straight").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_railing_end = new RailingBlock(Material.iron).setBlockName("steel_railing_end").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		steel_stairs = new RailingBlock(Material.iron).setBlockName("steel_stairs").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
-		road_barrier = new DecoBlock(Material.iron).setBlockName("road_barrier").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":concrete_stripe");
+		road_barrier_striped = new DecoBlock(Material.iron).setBlockName("road_barrier_striped").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete_stripe");
+		road_barrier_concrete = new DecoBlock(Material.iron).setBlockName("road_barrier_concrete").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
+		office_plant = new DecoBlock(Material.grass).setBlockName("office_plant").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.0F).setResistance(0.0F).setBlockTextureName(RefStrings.MODID + ":office_plant");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
@@ -2839,7 +2843,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(steel_railing_straight, steel_railing_straight.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_railing_end, steel_railing_end.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_stairs, steel_stairs.getUnlocalizedName());
-		GameRegistry.registerBlock(road_barrier, road_barrier.getUnlocalizedName());
+		GameRegistry.registerBlock(road_barrier_striped, road_barrier_striped.getUnlocalizedName());
+		GameRegistry.registerBlock(road_barrier_concrete, road_barrier_concrete.getUnlocalizedName());
+		GameRegistry.registerBlock(office_plant, office_plant.getUnlocalizedName());
+
 		//register(scaffold_dynamic);
 		/*
 		 * operation: pipe annihilation
