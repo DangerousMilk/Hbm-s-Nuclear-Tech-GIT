@@ -30,8 +30,8 @@ public class RenderRailing implements ISimpleBlockRenderingHandler {
 		GL11.glPushMatrix();
 		Tessellator tessellator = Tessellator.instance;
 
-		IIcon steelIcon = block.getIcon(0, 0);
-		IIcon grateIcon = block.getIcon(1, 0);
+		IIcon steelIcon = block.getIcon(0, metadata);
+		IIcon grateIcon = block.getIcon(1, metadata);
 		tessellator.setColorOpaque_F(1, 1, 1);
 
 		GL11.glTranslated(0, -0.5D, 0);
@@ -51,21 +51,20 @@ public class RenderRailing implements ISimpleBlockRenderingHandler {
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
 		int meta = world.getBlockMetadata(x, y, z);
-		IIcon steelIcon = block.getIcon(0, 0);
+		IIcon steelIcon = block.getIcon(0, meta);
 		IIcon grateIcon = block.getIcon(1, 0);
 		tessellator.setColorOpaque_F(1, 1, 1);
 
-		/*
 		if(renderer.hasOverrideBlockTexture()) {
-			steel = renderer.overrideBlockTexture;
+			steelIcon = renderer.overrideBlockTexture;
 		}
-		 */
 
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		tessellator.setColorOpaque_F(1, 1, 1);
 
 		float rotation = 0;
 
+		/*
 		switch(meta) {
 			case 2:
 				rotation = 90F / 180F * (float) Math.PI;
@@ -76,6 +75,16 @@ public class RenderRailing implements ISimpleBlockRenderingHandler {
 			case 4:
 				rotation = 180F / 180F * (float) Math.PI;
 				break;
+		}
+		 */
+		if(meta >= 12) {
+
+		} else if(meta >= 8) {
+			rotation = 180F / 180F * (float) Math.PI;
+		} else if(meta >= 4) {
+			rotation = 270F / 180F * (float) Math.PI;
+		} else if(meta >= 0) {
+			rotation = 90F / 180F * (float) Math.PI;
 		}
 
 		tessellator.addTranslation(x + 0.5F, y, z + 0.5F);
