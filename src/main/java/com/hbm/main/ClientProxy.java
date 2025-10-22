@@ -809,6 +809,7 @@ public class ClientProxy extends ServerProxy {
 		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.road_barrier_striped.getRenderType(), ResourceManager.road_barrier));
 		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.road_barrier_concrete.getRenderType(), ResourceManager.road_barrier));
 		RenderingRegistry.registerBlockHandler(new RenderRailing(ModBlocks.office_plant.getRenderType(), ResourceManager.office_plant));
+		RenderingRegistry.registerBlockHandler(new RenderGirder());
 		RenderingRegistry.registerBlockHandler(new RenderBarrel());
 		RenderingRegistry.registerBlockHandler(new RenderFence());
 		RenderingRegistry.registerBlockHandler(new RenderBarbedWire());
