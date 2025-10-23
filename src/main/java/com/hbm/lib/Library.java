@@ -7,6 +7,7 @@ import api.hbm.fluidmk2.IFluidConnectorBlockMK2;
 import api.hbm.fluidmk2.IFluidConnectorMK2;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.blocks.generic.BlockGirder;
 import com.hbm.entity.mob.EntityHunterChopper;
 import com.hbm.entity.projectile.EntityChopperMine;
 import com.hbm.interfaces.Spaghetti;
@@ -62,6 +63,12 @@ public class Library {
 
 			if(con.canConnect(world, x, y, z, dir.getOpposite() /* machine's connecting side */))
 				return true;
+		}
+		else if(b instanceof BlockGirder) {
+			BlockGirder con = (BlockGirder) b;
+
+			//if(con.canConnect(world, x, y, z, dir.getOpposite() /* machine's connecting side */))
+			return true;
 		}
 
 		TileEntity te = world.getTileEntity(x, y, z);
@@ -235,7 +242,7 @@ public class Library {
 
 		if(power < 0) return 0;
 		if(power > maxPower) return maxPower;
-		
+
 		if(slots[index] != null && slots[index].getItem() == ModItems.battery_creative) return 0;
 
 		if(slots[index] != null && slots[index].getItem() instanceof IBatteryItem) {

@@ -87,13 +87,13 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		}
 		*/
 		ObjUtil.renderPartWithIcon(model, "Core", iicon, tessellator, 0, true);
-		if(pZ) {
+		if(nZ) {
 			ObjUtil.renderPartWithIcon(model, "Top", iicon, tessellator, 0, true);
-		} else if(nZ) {
+		} if(pZ) {
 			ObjUtil.renderPartWithIcon(model, "Bottom", iicon, tessellator, 0, true);
-		} else if(nX) {
+		} if(nX) {
 			ObjUtil.renderPartWithIcon(model, "Left", iicon, tessellator, 0, true);
-		} else if(pX) {
+		} if(pX) {
 			ObjUtil.renderPartWithIcon(model, "Right", iicon, tessellator, 0, true);
 		}
 
