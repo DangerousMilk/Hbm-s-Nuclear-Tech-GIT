@@ -56,16 +56,26 @@ public class BlockGirder extends BlockContainer {
 	}
 
 	@Override
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hX, float hY, float hZ, int meta) {
+		/*
+		if(side == 0)
+			return 7;
+
+		if(side == 1)
+			return 0;
+		 */
+		return (int)Math.floor(hY * 8D);
+	}
+
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 
 		boolean posX = Library.canConnect(world, x + 1, y, z, Library.POS_X);
 		boolean negX = Library.canConnect(world, x - 1, y, z, Library.NEG_X);
-		boolean posY = Library.canConnect(world, x, y + 1, z, Library.POS_Y);
-		boolean negY = Library.canConnect(world, x, y - 1, z, Library.NEG_Y);
 		boolean posZ = Library.canConnect(world, x, y, z + 1, Library.POS_Z);
 		boolean negZ = Library.canConnect(world, x, y, z - 1, Library.NEG_Z);
 
-		setBlockBounds(posX, negX, posY, negY, posZ, negZ);
+		setBlockBounds(posX, negX, false, false, posZ, negZ);
 
 		return AxisAlignedBB.getBoundingBox(x + this.minX, y + this.minY, z + this.minZ, x + this.maxX, y + this.maxY, z + this.maxZ);
 	}
@@ -75,12 +85,10 @@ public class BlockGirder extends BlockContainer {
 
 		boolean posX = Library.canConnect(world, x + 1, y, z, Library.POS_X);
 		boolean negX = Library.canConnect(world, x - 1, y, z, Library.NEG_X);
-		boolean posY = Library.canConnect(world, x, y + 1, z, Library.POS_Y);
-		boolean negY = Library.canConnect(world, x, y - 1, z, Library.NEG_Y);
 		boolean posZ = Library.canConnect(world, x, y, z + 1, Library.POS_Z);
 		boolean negZ = Library.canConnect(world, x, y, z - 1, Library.NEG_Z);
 
-		setBlockBounds(posX, negX, posY, negY, posZ, negZ);
+		setBlockBounds(posX, negX, false, false, posZ, negZ);
 	}
 
 	private void setBlockBounds(boolean posX, boolean negX, boolean posY, boolean negY, boolean posZ, boolean negZ) {
