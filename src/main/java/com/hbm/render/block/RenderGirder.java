@@ -47,6 +47,7 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 
 		Tessellator tessellator = Tessellator.instance;
+		int meta = world.getBlockMetadata(x, y, z);
 		IIcon iicon = block.getIcon(0, 0);
 		WavefrontObject model = (WavefrontObject) ResourceManager.steel_girder;
 
@@ -66,7 +67,9 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		boolean pZ = Library.canConnect(world, x, y, z + 1, Library.POS_Z);
 		boolean nZ = Library.canConnect(world, x, y, z - 1, Library.NEG_Z);
 
-		tessellator.addTranslation(x + 0.5F, y, z + 0.5F);
+		float offset = (1F / 16F) * 6F;
+
+		tessellator.addTranslation(x + 0.5F, y + ((meta == 1) ? - offset : offset), z + 0.5F);
 
 		/*
 		if(pX && nX && !pY && !nY && !pZ && !nZ)
@@ -97,7 +100,7 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 			ObjUtil.renderPartWithIcon(model, "Right", iicon, tessellator, 0, true);
 		}
 
-		tessellator.addTranslation(-x - 0.5F, -y, -z - 0.5F);
+		tessellator.addTranslation(-x - 0.5F, -y - ((meta == 1) ? - offset : offset), -z - 0.5F);
 
 		return true;
 	}
