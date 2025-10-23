@@ -29,18 +29,18 @@ public class BlockGrate extends Block implements ITooltipProvider {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon sideIcon;
-	
+
 	public BlockGrate(Material material) {
 		super(material);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		this.blockIcon = iconRegister.registerIcon(RefStrings.MODID + (this == ModBlocks.steel_grate ? ":grate_top" : ":grate_wide_top"));
 		this.sideIcon = iconRegister.registerIcon(RefStrings.MODID + ":grate_side");
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata) {
@@ -95,10 +95,10 @@ public class BlockGrate extends Block implements ITooltipProvider {
 
 		if(side == 0)
 			return 7;
-		
+
 		if(side == 1)
 			return 0;
-		
+
 		return (int)Math.floor(hY * 8D);
 	}
 
@@ -152,14 +152,14 @@ public class BlockGrate extends Block implements ITooltipProvider {
 			super.addCollisionBoxesToList(world, x, y, z, entityBounding, list, entity);
 			return;
 		}
-		
+
 		int meta = world.getBlockMetadata(x, y, z);
-		
+
 		if((entity instanceof EntityItem || entity instanceof EntityXPOrb) && entity.posY < y + meta * 0.125D + 0.375) {
 			entity.motionX = 0;
 			entity.motionY = -0.25;
 			entity.motionZ = 0;
-			
+
 			entity.setPosition(entity.posX, entity.posY - 0.125, entity.posZ);
 		}
 	}

@@ -68,7 +68,8 @@ public class Library {
 			BlockGirder con = (BlockGirder) b;
 
 			//if(con.canConnect(world, x, y, z, dir.getOpposite() /* machine's connecting side */))
-			return true;
+			if(con.canConnect(world, x, y, z, dir.getOpposite()))
+				return  true;
 		}
 
 		TileEntity te = world.getTileEntity(x, y, z);
