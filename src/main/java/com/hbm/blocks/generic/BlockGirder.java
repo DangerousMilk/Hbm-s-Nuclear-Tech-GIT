@@ -11,26 +11,24 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockGirder extends Block {
-	public static int renderID = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDGirder = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDBracket = RenderingRegistry.getNextAvailableRenderId();
+
 
 	public BlockGirder(Material p_i45386_1_) {
 		super(p_i45386_1_);
 	}
-
-	/*
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntity();
-	}
-	 */
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -47,7 +45,11 @@ public class BlockGirder extends Block {
 
 	@Override
 	public int getRenderType() {
-		return renderID;
+		if(this == ModBlocks.steel_girder) {
+			return renderIDGirder;
+		} else {
+			return renderIDBracket;
+		}
 	}
 
 	@Override
@@ -64,16 +66,31 @@ public class BlockGirder extends Block {
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hX, float hY, float hZ, int meta) {
 		if(side == 0)
 			// Bottom
-			return 0;
+			return 5;
 		else if(side == 1)
 			// Top
-			return 1;
-		else if(hY > 0.5F)
 			return 0;
+		else if(hY > 0.5F)
+			return 5;
 		else if(hY < 0.5F)
-			return 1;
+			return 0;
 
-		return  1;
+		return  0;
+	}
+
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
+		if(this != ModBlocks.steel_girder_bracket) return;
+
+		int meta = world.getBlockMetadata(x, y, z);
+		int i = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+
+		if(i == 0) world.setBlockMetadataWithNotify(x, y, z, 1 + meta, 2);
+		if(i == 1) world.setBlockMetadataWithNotify(x, y, z, 2 + meta, 2);
+		if(i == 2) world.setBlockMetadataWithNotify(x, y, z, 3 + meta, 2);
+		if(i == 3) world.setBlockMetadataWithNotify(x, y, z, 4 + meta, 2);
+
+		System.out.println(world.getBlockMetadata(x, y, z));
 	}
 
 	@Override
@@ -114,8 +131,8 @@ public class BlockGirder extends Block {
 
 		float minX = negX ? 0F : min;
 		float maxX = posX ? 1F : max;
-		float minY = (meta == 1) ? 0F : pixel * 12F;
-		float maxY = (meta == 1) ? pixel * 4F : 1F;
+		float minY = (meta >= 5) ? pixel * 12F : 0F;
+		float maxY = (meta >= 5) ? 1F : pixel * 4F;
 		float minZ = negZ ? 0F : min;
 		float maxZ = posZ ? 1F : max;
 

@@ -436,6 +436,7 @@ public class ModBlocks {
 	public static Block road_barrier_concrete;
 	public static Block office_plant;
 	public static Block steel_girder;
+	public static Block steel_girder_bracket;
 
 	@Deprecated public static Block deco_pipe;
 	@Deprecated public static Block deco_pipe_rusted;
@@ -1650,6 +1651,7 @@ public class ModBlocks {
 		road_barrier_concrete = new DecoBlock(Material.iron).setBlockName("road_barrier_concrete").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
 		office_plant = new DecoBlock(Material.grass).setBlockName("office_plant").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.0F).setResistance(0.0F).setBlockTextureName(RefStrings.MODID + ":office_plant");
 		steel_girder = new BlockGirder(Material.iron).setBlockName("steel_girder").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
+		steel_girder_bracket = new BlockGirder(Material.iron).setBlockName("steel_girder_bracket").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
@@ -2849,6 +2851,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(road_barrier_concrete, road_barrier_concrete.getUnlocalizedName());
 		GameRegistry.registerBlock(office_plant, office_plant.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_girder, steel_girder.getUnlocalizedName());
+		GameRegistry.registerBlock(steel_girder_bracket, steel_girder_bracket.getUnlocalizedName());
 
 		//register(scaffold_dynamic);
 		/*
