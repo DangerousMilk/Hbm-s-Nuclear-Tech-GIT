@@ -120,6 +120,7 @@ public class BlockGirder extends Block {
 
 	public boolean canConnect(IBlockAccess world, int x, int y, int z, ForgeDirection dir)
 	{
+		if(t)
 		return world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) == world.getBlockMetadata(x, y, z);
 	}
 
