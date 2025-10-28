@@ -65,13 +65,14 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean topSide = (meta >= 5);
-		boolean pX = Library.canConnect(world, x + 1, y, z, Library.POS_X);
-		boolean nX = Library.canConnect(world, x - 1, y, z, Library.NEG_X);
-		boolean pZ = Library.canConnect(world, x, y, z + 1, Library.POS_Z);
-		boolean nZ = Library.canConnect(world, x, y, z - 1, Library.NEG_Z);
-		float offset = (1F / 16F) * 6F;
 
 		if(block == ModBlocks.steel_girder) {
+			boolean pX = Library.canConnect(world, x + 1, y, z, Library.POS_X);
+			boolean nX = Library.canConnect(world, x - 1, y, z, Library.NEG_X);
+			boolean pZ = Library.canConnect(world, x, y, z + 1, Library.POS_Z);
+			boolean nZ = Library.canConnect(world, x, y, z - 1, Library.NEG_Z);
+			float offset = (1F / 16F) * 6F;
+
 			tessellator.addTranslation(x + 0.5F, y + (topSide ? offset : - offset), z + 0.5F);
 
 			ObjUtil.renderPartWithIcon(model, "Core", iicon, tessellator, 0, true);
