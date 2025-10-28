@@ -1,3 +1,0 @@
-﻿-- logger module started --
-main: Running vlc with the default interface. Use 'cvlc' to use vlc without interface.
--- logger module stopped --

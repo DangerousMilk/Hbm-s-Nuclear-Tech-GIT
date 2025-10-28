@@ -40,15 +40,7 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		GL11.glScaled(1.25D, 1.25D, 1.25D);
 
 		tessellator.startDrawingQuads();
-		if(block == ModBlocks.steel_girder) {
-			ObjUtil.renderPartWithIcon(model, "Core", iicon, tessellator, 0, false);
-			ObjUtil.renderPartWithIcon(model, "Top", iicon, tessellator, 0, false);
-			ObjUtil.renderPartWithIcon(model, "Bottom", iicon, tessellator, 0, false);
-			ObjUtil.renderPartWithIcon(model, "Left", iicon, tessellator, 0, false);
-			ObjUtil.renderPartWithIcon(model, "Right", iicon, tessellator, 0, false);
-		} else {
-			ObjUtil.renderWithIcon(model, iicon, tessellator, 0, false);
-		}
+		ObjUtil.renderWithIcon(model, iicon, tessellator, 0, false);
 		tessellator.draw();
 
 		GL11.glPopMatrix();

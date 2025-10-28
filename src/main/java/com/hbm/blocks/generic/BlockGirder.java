@@ -22,9 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockGirder extends Block {
-	public static int renderIDGirder = RenderingRegistry.getNextAvailableRenderId();
-	public static int renderIDBracket = RenderingRegistry.getNextAvailableRenderId();
-
+	public static int girderRenderID;
 
 	public BlockGirder(Material p_i45386_1_) {
 		super(p_i45386_1_);
@@ -45,11 +43,7 @@ public class BlockGirder extends Block {
 
 	@Override
 	public int getRenderType() {
-		if(this == ModBlocks.steel_girder) {
-			return renderIDGirder;
-		} else {
-			return renderIDBracket;
-		}
+		return girderRenderID;
 	}
 
 	@Override
@@ -79,21 +73,6 @@ public class BlockGirder extends Block {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
-		if(this != ModBlocks.steel_girder_bracket) return;
-
-		int meta = world.getBlockMetadata(x, y, z);
-		int i = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-
-		if(i == 0) world.setBlockMetadataWithNotify(x, y, z, 1 + meta, 2);
-		if(i == 1) world.setBlockMetadataWithNotify(x, y, z, 2 + meta, 2);
-		if(i == 2) world.setBlockMetadataWithNotify(x, y, z, 3 + meta, 2);
-		if(i == 3) world.setBlockMetadataWithNotify(x, y, z, 4 + meta, 2);
-
-		System.out.println(world.getBlockMetadata(x, y, z));
-	}
-
-	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 
@@ -120,7 +99,6 @@ public class BlockGirder extends Block {
 
 	public boolean canConnect(IBlockAccess world, int x, int y, int z, ForgeDirection dir)
 	{
-		if(t)
 		return world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) == world.getBlockMetadata(x, y, z);
 	}
 
