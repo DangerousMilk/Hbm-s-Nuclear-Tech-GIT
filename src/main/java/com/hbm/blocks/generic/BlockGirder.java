@@ -3,6 +3,7 @@ package com.hbm.blocks.generic;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.lib.Library;
 import com.hbm.lib.RefStrings;
+import com.hbm.render.block.RenderGirder;
 import com.hbm.tileentity.network.TileEntityCableBaseNT;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -22,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockGirder extends Block {
-	public static int girderRenderID;
+	public static int renderID = RenderingRegistry.getNextAvailableRenderId();
 
 	public BlockGirder(Material p_i45386_1_) {
 		super(p_i45386_1_);
@@ -43,7 +44,7 @@ public class BlockGirder extends Block {
 
 	@Override
 	public int getRenderType() {
-		return girderRenderID;
+		return renderID;
 	}
 
 	@Override

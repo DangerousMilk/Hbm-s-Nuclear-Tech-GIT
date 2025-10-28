@@ -26,9 +26,7 @@ public class BlockGirderBracket extends BlockGirder {
 	}
 
 	@Override
-	public int getRenderType() {
-		return renderID;
-	}
+	public int getRenderType() { return renderID; }
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
