@@ -74,21 +74,6 @@ public class BlockGirder extends Block {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemStack) {
-		if(this != ModBlocks.steel_girder_bracket) return;
-
-		int meta = world.getBlockMetadata(x, y, z);
-		int i = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-
-		if(i == 0) world.setBlockMetadataWithNotify(x, y, z, 1 + meta, 2);
-		if(i == 1) world.setBlockMetadataWithNotify(x, y, z, 2 + meta, 2);
-		if(i == 2) world.setBlockMetadataWithNotify(x, y, z, 3 + meta, 2);
-		if(i == 3) world.setBlockMetadataWithNotify(x, y, z, 4 + meta, 2);
-
-		System.out.println(world.getBlockMetadata(x, y, z));
-	}
-
-	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 
