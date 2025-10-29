@@ -8,7 +8,6 @@ import api.hbm.fluidmk2.IFluidConnectorMK2;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.blocks.generic.BlockGirder;
-import com.hbm.blocks.generic.BlockGirderBracket;
 import com.hbm.entity.mob.EntityHunterChopper;
 import com.hbm.entity.projectile.EntityChopperMine;
 import com.hbm.interfaces.Spaghetti;

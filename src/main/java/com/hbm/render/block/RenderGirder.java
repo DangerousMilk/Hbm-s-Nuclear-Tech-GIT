@@ -1,8 +1,6 @@
 package com.hbm.render.block;
 
 import com.hbm.blocks.ModBlocks;
-import com.hbm.blocks.generic.BlockGirder;
-import com.hbm.blocks.network.BlockCable;
 import com.hbm.lib.Library;
 import com.hbm.main.ResourceManager;
 import com.hbm.render.util.ObjUtil;
@@ -12,7 +10,6 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.client.model.IModelCustom;
 import net.minecraftforge.client.model.obj.WavefrontObject;
 import org.lwjgl.opengl.GL11;
 
