@@ -49,7 +49,14 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		Tessellator tessellator = Tessellator.instance;
 
 		IIcon iicon = block.getIcon(0, 0);
-		WavefrontObject model = (block == ModBlocks.steel_girder) ? (WavefrontObject) ResourceManager.steel_girder : (WavefrontObject) ResourceManager.steel_girder_bracket;
+		WavefrontObject model;
+		if(block == ModBlocks.steel_girder) {
+			model = (WavefrontObject) ResourceManager.steel_girder;
+		} else if(block == ModBlocks.steel_girder_bracket) {
+			model = (WavefrontObject) ResourceManager.steel_girder_bracket;
+		} else {
+			model = (WavefrontObject) ResourceManager.steel_girder_wall;
+		}
 
 		tessellator.setColorOpaque_F(1, 1, 1);
 

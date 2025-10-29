@@ -434,9 +434,9 @@ public class ModBlocks {
 	public static Block steel_stairs;
 	public static Block road_barrier_striped;
 	public static Block road_barrier_concrete;
-	public static Block office_plant;
 	public static Block steel_girder;
 	public static Block steel_girder_bracket;
+	public static Block steel_girder_wall;
 
 	@Deprecated public static Block deco_pipe;
 	@Deprecated public static Block deco_pipe_rusted;
@@ -1652,9 +1652,9 @@ public class ModBlocks {
 		steel_stairs = new RailingBlock(Material.iron).setBlockName("steel_stairs").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(5.0F).setResistance(15.0F).setBlockTextureName(RefStrings.MODID + ":block_steel");
 		road_barrier_striped = new DecoBlock(Material.iron).setBlockName("road_barrier_striped").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete_stripe");
 		road_barrier_concrete = new DecoBlock(Material.iron).setBlockName("road_barrier_concrete").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
-		office_plant = new DecoBlock(Material.grass).setBlockName("office_plant").setStepSound(Block.soundTypeGrass).setCreativeTab(MainRegistry.blockTab).setHardness(0.0F).setResistance(0.0F).setBlockTextureName(RefStrings.MODID + ":office_plant");
 		steel_girder = new BlockGirder(Material.iron).setBlockName("steel_girder").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
 		steel_girder_bracket = new BlockGirderBracket(Material.iron).setBlockName("steel_girder_bracket").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
+		steel_girder_wall = new DecoBlock(Material.iron).setBlockName("steel_girder_wall").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
@@ -2855,9 +2855,9 @@ public class ModBlocks {
 		GameRegistry.registerBlock(steel_stairs, steel_stairs.getUnlocalizedName());
 		GameRegistry.registerBlock(road_barrier_striped, road_barrier_striped.getUnlocalizedName());
 		GameRegistry.registerBlock(road_barrier_concrete, road_barrier_concrete.getUnlocalizedName());
-		GameRegistry.registerBlock(office_plant, office_plant.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_girder, steel_girder.getUnlocalizedName());
 		GameRegistry.registerBlock(steel_girder_bracket, steel_girder_bracket.getUnlocalizedName());
+		GameRegistry.registerBlock(steel_girder_wall, steel_girder_wall.getUnlocalizedName());
 
 		//register(scaffold_dynamic);
 		/*

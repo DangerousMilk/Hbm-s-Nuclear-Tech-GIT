@@ -67,7 +67,7 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 	public static int renderIDWall = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDCorner = RenderingRegistry.getNextAvailableRenderId();
 	public static int renderIDRoadBarrier = RenderingRegistry.getNextAvailableRenderId();
-	public static int renderIDOfficePlant = RenderingRegistry.getNextAvailableRenderId();
+	public static int renderIDSteelGirderWall = RenderingRegistry.getNextAvailableRenderId();
 
 	@Override
 	public int getRenderType(){
@@ -75,7 +75,7 @@ public class DecoBlock extends BlockContainer implements IToolable, INBTBlockTra
 		if(this == ModBlocks.steel_corner) return renderIDCorner;
 		if(this == ModBlocks.steel_beam) return renderIDBeam;
 		if(this == ModBlocks.road_barrier_striped || this == ModBlocks.road_barrier_concrete) return renderIDRoadBarrier;
-		if(this == ModBlocks.office_plant) return renderIDOfficePlant;
+		if(this == ModBlocks.steel_girder_wall) return renderIDSteelGirderWall;
 
 		return -1;
 	}
