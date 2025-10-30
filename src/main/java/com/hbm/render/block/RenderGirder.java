@@ -23,9 +23,9 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 		GL11.glPushMatrix();
 		Tessellator tessellator = Tessellator.instance;
-		IIcon iicon = block.getIcon(0, 0);
 
-		WavefrontObject model = (block == ModBlocks.steel_girder) ? (WavefrontObject) ResourceManager.steel_girder : (WavefrontObject) ResourceManager.steel_girder_bracket;
+		IIcon iicon = block.getIcon(0, 0);
+		WavefrontObject model = getModel(block);
 
 		tessellator.setColorOpaque_F(1, 1, 1);
 
@@ -49,14 +49,7 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		Tessellator tessellator = Tessellator.instance;
 
 		IIcon iicon = block.getIcon(0, 0);
-		WavefrontObject model;
-		if(block == ModBlocks.steel_girder) {
-			model = (WavefrontObject) ResourceManager.steel_girder;
-		} else if(block == ModBlocks.steel_girder_bracket) {
-			model = (WavefrontObject) ResourceManager.steel_girder_bracket;
-		} else {
-			model = (WavefrontObject) ResourceManager.steel_girder_wall;
-		}
+		WavefrontObject model = getModel(block);
 
 		tessellator.setColorOpaque_F(1, 1, 1);
 
@@ -111,6 +104,17 @@ public class RenderGirder implements ISimpleBlockRenderingHandler {
 		}
 
 		return true;
+	}
+
+	public WavefrontObject getModel(Block block)
+	{
+		if(block == ModBlocks.steel_girder) {
+			return (WavefrontObject) ResourceManager.steel_girder;
+		} else if(block == ModBlocks.steel_girder_bracket) {
+			return (WavefrontObject) ResourceManager.steel_girder_bracket;
+		} else {
+			return (WavefrontObject) ResourceManager.steel_girder_wall;
+		}
 	}
 
 	@Override

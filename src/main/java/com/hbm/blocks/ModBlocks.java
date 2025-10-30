@@ -1653,8 +1653,8 @@ public class ModBlocks {
 		road_barrier_striped = new DecoBlock(Material.iron).setBlockName("road_barrier_striped").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete_stripe");
 		road_barrier_concrete = new DecoBlock(Material.iron).setBlockName("road_barrier_concrete").setStepSound(Block.soundTypeStone).setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(100.0F).setBlockTextureName(RefStrings.MODID + ":concrete");
 		steel_girder = new BlockGirder(Material.iron).setBlockName("steel_girder").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
-		steel_girder_bracket = new BlockGirderBracket(Material.iron).setBlockName("steel_girder_bracket").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
-		steel_girder_wall = new DecoBlock(Material.iron).setBlockName("steel_girder_wall").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
+		steel_girder_bracket = new BlockGirder(Material.iron).setBlockName("steel_girder_bracket").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
+		steel_girder_wall = new BlockGirder(Material.iron).setBlockName("steel_girder_wall").setStepSound(ModSoundTypes.pipe).setCreativeTab(MainRegistry.blockTab).setHardness(15F).setResistance(10.0F).setBlockTextureName(RefStrings.MODID + ":scaffold_steel");
 
 		//TODO: dear god
 		deco_pipe = new BlockPipe(Material.iron, RefStrings.MODID + ":pipe_side", 0).setBlockName("deco_pipe").setStepSound(ModSoundTypes.grate).setCreativeTab(MainRegistry.blockTab).setHardness(2.0F).setResistance(5.0F).setBlockTextureName(RefStrings.MODID + ":pipe_top");
