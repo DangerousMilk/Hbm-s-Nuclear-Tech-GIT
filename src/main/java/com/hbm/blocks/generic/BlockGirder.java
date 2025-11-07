@@ -1,6 +1,7 @@
 package com.hbm.blocks.generic;
 
 import com.hbm.blocks.ModBlocks;
+import com.hbm.items.ModItems;
 import com.hbm.lib.Library;
 import com.hbm.lib.RefStrings;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -12,6 +13,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -92,6 +95,17 @@ public class BlockGirder extends Block {
 		if(i == 1) world.setBlockMetadataWithNotify(x, y, z, 2 + meta, 2);
 		if(i == 2) world.setBlockMetadataWithNotify(x, y, z, 3 + meta, 2);
 		if(i == 3) world.setBlockMetadataWithNotify(x, y, z, 4 + meta, 2);
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		if(this != ModBlocks.steel_girder) return false;
+
+		if(player.getHeldItem().getItem() == Item.getItemFromBlock(ModBlocks.steel_grate)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	@Override
